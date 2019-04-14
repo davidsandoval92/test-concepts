@@ -25,10 +25,12 @@ export class DateSolutionComponent implements OnInit {
     { id: 10, name: 'NOVIEMBRE' },
     { id: 11, name: 'DICIEMBRE' },
   ];
+  public monthsSelected;
   public readonly MONTHS = 12;
 
   constructor() {
-    this.dateObtained = '2018-12-17';
+    this.monthsSelected = new Array();
+    this.dateObtained = '2018-06-17';
     this.getDate();
     this.obtainYearAndMonth();
   }
@@ -38,16 +40,11 @@ export class DateSolutionComponent implements OnInit {
 
   public getDate(): void {
     this.dateCurrently = new Date();
-    console.log('Date currently: ' + this.dateCurrently);
-    console.log(this.dateCurrently.getMonth() + 1);
-    console.log(this.dateObtained);
     const newDate = new Date(this.dateObtained);
-    console.log(newDate.getMonth() + 1);
-    console.log(this.months[newDate.getMonth()].name);
-
     this.months.forEach((item, i) => {
       if (i >= newDate.getMonth()) {
         console.log(item.name);
+        this.monthsSelected.push(item);
       }
     }
     );
